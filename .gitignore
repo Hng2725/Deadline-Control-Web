@@ -25,6 +25,12 @@ pnpm-debug.log*
 # TypeScript incremental build state
 *.tsbuildinfo
 
+# Test reports and coverage
+coverage/
+playwright-report/
+test-results/
+blob-report/
+
 # Local databases and tool indexes
 *.sqlite
 *.sqlite-shm

@@ -9,6 +9,23 @@ export function addDays(date: string | Date, amount: number) {
   return toDateKey(value);
 }
 
+export function addMonths(date: string, amount: number) {
+  const value = new Date(`${date}T12:00:00`);
+  const targetMonth = value.getMonth() + amount;
+  const targetYear = value.getFullYear() + Math.floor(targetMonth / 12);
+  const normalizedMonth = ((targetMonth % 12) + 12) % 12;
+  const lastDay = new Date(targetYear, normalizedMonth + 1, 0).getDate();
+  return toDateKey(new Date(targetYear, normalizedMonth, Math.min(value.getDate(), lastDay), 12));
+}
+
+export function formatDuration(minutes: number) {
+  const safeMinutes = Math.max(0, Math.round(minutes));
+  const hours = Math.floor(safeMinutes / 60);
+  const remainder = safeMinutes % 60;
+  if (!hours) return `${remainder}m`;
+  return remainder ? `${hours}h ${remainder}m` : `${hours}h`;
+}
+
 export function formatDate(date: string, options: Intl.DateTimeFormatOptions = { month: "short", day: "numeric" }) {
   return new Intl.DateTimeFormat("en", options).format(new Date(`${date}T12:00:00`));
 }
