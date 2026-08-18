@@ -17,7 +17,7 @@
     "@dnd-kit/sortable": "^10.0.0",
     "@dnd-kit/utilities": "^3.2.2",
     "gitnexus": "^1.6.9",
-    "next": "^15.5.20",
+    "next": "^15.5.21",
     "react": "19.1.0",
     "react-dom": "19.1.0"
   },
